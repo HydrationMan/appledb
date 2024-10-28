@@ -1,0 +1,902 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A73D12712CA1793800D4A59F /* AppleDBWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A75C215F2C9D55CD00DC3F6A /* AppleDBWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A73D12722CA1794500D4A59F /* AppleDBPhoneWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A75C21612C9D560A00DC3F6A /* AppleDBPhoneWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A73D12732CA1795900D4A59F /* AppleDBWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A75C21622C9D561300DC3F6A /* AppleDBWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A75F8A9B2CCEE395003923DB /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = A75F8A9A2CCEE395003923DB /* SwipeActions */; };
+		A7C3A8C12CCB762E00F0132B /* NavigationStackBackport in Frameworks */ = {isa = PBXBuildFile; productRef = A7C3A8C02CCB762E00F0132B /* NavigationStackBackport */; };
+		A7EF28792C7B06840015B741 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7EF28782C7B06840015B741 /* WidgetKit.framework */; };
+		A7EF287B2C7B06840015B741 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7EF287A2C7B06840015B741 /* SwiftUI.framework */; };
+		A7EF28C72C7B07B60015B741 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7EF28782C7B06840015B741 /* WidgetKit.framework */; };
+		A7EF28C82C7B07B60015B741 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7EF287A2C7B06840015B741 /* SwiftUI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A7EF28842C7B06860015B741 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7BD66922C58E79300C91BE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7EF28752C7B06840015B741;
+			remoteInfo = PearDBPhoneWidgetExtension;
+		};
+		A7EF28AE2C7B06F60015B741 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7BD66922C58E79300C91BE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7EF28A22C7B06F40015B741;
+			remoteInfo = "PearDBWatchApp Watch App";
+		};
+		A7EF28CF2C7B07B80015B741 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7BD66922C58E79300C91BE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7EF28C52C7B07B60015B741;
+			remoteInfo = PearDBWatchAppWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A7EF288B2C7B06860015B741 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A73D12722CA1794500D4A59F /* AppleDBPhoneWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28B42C7B06F60015B741 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A73D12712CA1793800D4A59F /* AppleDBWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28D62C7B07B80015B741 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A73D12732CA1795900D4A59F /* AppleDBWatchWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A741DE492CA3C13F002BD919 /* AppleDBPhoneWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleDBPhoneWidget.entitlements; sourceTree = "<group>"; };
+		A741DE4A2CA3C142002BD919 /* AppleDBWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleDBWatchWidget.entitlements; sourceTree = "<group>"; };
+		A75C215F2C9D55CD00DC3F6A /* AppleDBWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleDBWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A75C21602C9D55D700DC3F6A /* AppleDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A75C21612C9D560A00DC3F6A /* AppleDBPhoneWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AppleDBPhoneWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A75C21622C9D561300DC3F6A /* AppleDBWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AppleDBWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7EF28782C7B06840015B741 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A7EF287A2C7B06840015B741 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A741DE532CA3CDFE002BD919 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				HardwareDataModel.xcdatamodeld,
+			);
+			target = A7EF28A22C7B06F40015B741 /* AppleDBWatch */;
+		};
+		A7EF28F62C7B088C0015B741 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A7EF28C52C7B07B60015B741 /* AppleDBWatchWidget */;
+		};
+		A7EF28F72C7B08900015B741 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A7EF28752C7B06840015B741 /* AppleDBPhoneWidget */;
+		};
+		A7EF28FE2C7B0B250015B741 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A7EF28A22C7B06F40015B741 /* AppleDBWatch */;
+		};
+		A7EF290C2C7B3AAF0015B741 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A7BD66992C58E79300C91BE1 /* AppleDB */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A7BD669C2C58E79300C91BE1 /* AppleDB */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7EF290C2C7B3AAF0015B741 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A741DE532CA3CDFE002BD919 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = AppleDB; sourceTree = "<group>"; };
+		A7EF287C2C7B06840015B741 /* AppleDBPhoneWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7EF28F72C7B08900015B741 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = AppleDBPhoneWidget; sourceTree = "<group>"; };
+		A7EF28A42C7B06F40015B741 /* AppleDBWatch */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7EF28FE2C7B0B250015B741 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = AppleDBWatch; sourceTree = "<group>"; };
+		A7EF28C92C7B07B60015B741 /* AppleDBWatchWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7EF28F62C7B088C0015B741 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = AppleDBWatchWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7BD66972C58E79300C91BE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7C3A8C12CCB762E00F0132B /* NavigationStackBackport in Frameworks */,
+				A75F8A9B2CCEE395003923DB /* SwipeActions in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28732C7B06840015B741 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7EF287B2C7B06840015B741 /* SwiftUI.framework in Frameworks */,
+				A7EF28792C7B06840015B741 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28A02C7B06F40015B741 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28C32C7B07B60015B741 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7EF28C82C7B07B60015B741 /* SwiftUI.framework in Frameworks */,
+				A7EF28C72C7B07B60015B741 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A7BD66912C58E79300C91BE1 = {
+			isa = PBXGroup;
+			children = (
+				A741DE4A2CA3C142002BD919 /* AppleDBWatchWidget.entitlements */,
+				A741DE492CA3C13F002BD919 /* AppleDBPhoneWidget.entitlements */,
+				A7BD669C2C58E79300C91BE1 /* AppleDB */,
+				A7EF287C2C7B06840015B741 /* AppleDBPhoneWidget */,
+				A7EF28A42C7B06F40015B741 /* AppleDBWatch */,
+				A7EF28C92C7B07B60015B741 /* AppleDBWatchWidget */,
+				A7EF28772C7B06840015B741 /* Frameworks */,
+				A75C215F2C9D55CD00DC3F6A /* AppleDBWatch.app */,
+				A75C21602C9D55D700DC3F6A /* AppleDB.app */,
+				A75C21612C9D560A00DC3F6A /* AppleDBPhoneWidget.appex */,
+				A75C21622C9D561300DC3F6A /* AppleDBWatchWidget.appex */,
+			);
+			sourceTree = "<group>";
+		};
+		A7EF28772C7B06840015B741 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7EF28782C7B06840015B741 /* WidgetKit.framework */,
+				A7EF287A2C7B06840015B741 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A7BD66992C58E79300C91BE1 /* AppleDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7BD66A82C58E79500C91BE1 /* Build configuration list for PBXNativeTarget "AppleDB" */;
+			buildPhases = (
+				A7BD66962C58E79300C91BE1 /* Sources */,
+				A7BD66972C58E79300C91BE1 /* Frameworks */,
+				A7BD66982C58E79300C91BE1 /* Resources */,
+				A7EF288B2C7B06860015B741 /* Embed Foundation Extensions */,
+				A7EF28B42C7B06F60015B741 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7EF28852C7B06860015B741 /* PBXTargetDependency */,
+				A7EF28AF2C7B06F60015B741 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A7BD669C2C58E79300C91BE1 /* AppleDB */,
+			);
+			name = AppleDB;
+			packageProductDependencies = (
+				A7C3A8C02CCB762E00F0132B /* NavigationStackBackport */,
+				A75F8A9A2CCEE395003923DB /* SwipeActions */,
+			);
+			productName = PearDB;
+			productReference = A75C21602C9D55D700DC3F6A /* AppleDB.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A7EF28752C7B06840015B741 /* AppleDBPhoneWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7EF28872C7B06860015B741 /* Build configuration list for PBXNativeTarget "AppleDBPhoneWidget" */;
+			buildPhases = (
+				A7EF28722C7B06840015B741 /* Sources */,
+				A7EF28732C7B06840015B741 /* Frameworks */,
+				A7EF28742C7B06840015B741 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A7EF287C2C7B06840015B741 /* AppleDBPhoneWidget */,
+			);
+			name = AppleDBPhoneWidget;
+			packageProductDependencies = (
+			);
+			productName = PearDBPhoneWidgetExtension;
+			productReference = A75C21612C9D560A00DC3F6A /* AppleDBPhoneWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A7EF28A22C7B06F40015B741 /* AppleDBWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7EF28B12C7B06F60015B741 /* Build configuration list for PBXNativeTarget "AppleDBWatch" */;
+			buildPhases = (
+				A7EF289F2C7B06F40015B741 /* Sources */,
+				A7EF28A02C7B06F40015B741 /* Frameworks */,
+				A7EF28A12C7B06F40015B741 /* Resources */,
+				A7EF28D62C7B07B80015B741 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7EF28D02C7B07B80015B741 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A7EF28A42C7B06F40015B741 /* AppleDBWatch */,
+			);
+			name = AppleDBWatch;
+			packageProductDependencies = (
+			);
+			productName = "PearDBWatchApp Watch App";
+			productReference = A75C215F2C9D55CD00DC3F6A /* AppleDBWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A7EF28C52C7B07B60015B741 /* AppleDBWatchWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7EF28D22C7B07B80015B741 /* Build configuration list for PBXNativeTarget "AppleDBWatchWidget" */;
+			buildPhases = (
+				A7EF28C22C7B07B60015B741 /* Sources */,
+				A7EF28C32C7B07B60015B741 /* Frameworks */,
+				A7EF28C42C7B07B60015B741 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A7EF28C92C7B07B60015B741 /* AppleDBWatchWidget */,
+			);
+			name = AppleDBWatchWidget;
+			packageProductDependencies = (
+			);
+			productName = PearDBWatchAppWidgetExtension;
+			productReference = A75C21622C9D561300DC3F6A /* AppleDBWatchWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7BD66922C58E79300C91BE1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A7BD66992C58E79300C91BE1 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					A7EF28752C7B06840015B741 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					A7EF28A22C7B06F40015B741 = {
+						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
+					};
+					A7EF28C52C7B07B60015B741 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A7BD66952C58E79300C91BE1 /* Build configuration list for PBXProject "AppleDB" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A7BD66912C58E79300C91BE1;
+			packageReferences = (
+				A7C3A8BF2CCB762E00F0132B /* XCRemoteSwiftPackageReference "navigation-stack-backport" */,
+				A75F8A992CCEE395003923DB /* XCRemoteSwiftPackageReference "SwipeActions" */,
+			);
+			productRefGroup = A7BD66912C58E79300C91BE1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7BD66992C58E79300C91BE1 /* AppleDB */,
+				A7EF28A22C7B06F40015B741 /* AppleDBWatch */,
+				A7EF28752C7B06840015B741 /* AppleDBPhoneWidget */,
+				A7EF28C52C7B07B60015B741 /* AppleDBWatchWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7BD66982C58E79300C91BE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28742C7B06840015B741 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28A12C7B06F40015B741 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28C42C7B07B60015B741 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A7BD66962C58E79300C91BE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28722C7B06840015B741 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF289F2C7B06F40015B741 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EF28C22C7B07B60015B741 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A7EF28852C7B06860015B741 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7EF28752C7B06840015B741 /* AppleDBPhoneWidget */;
+			targetProxy = A7EF28842C7B06860015B741 /* PBXContainerItemProxy */;
+		};
+		A7EF28AF2C7B06F60015B741 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7EF28A22C7B06F40015B741 /* AppleDBWatch */;
+			targetProxy = A7EF28AE2C7B06F60015B741 /* PBXContainerItemProxy */;
+		};
+		A7EF28D02C7B07B80015B741 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7EF28C52C7B07B60015B741 /* AppleDBWatchWidget */;
+			targetProxy = A7EF28CF2C7B07B80015B741 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A7BD66A62C58E79500C91BE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A7BD66A72C58E79500C91BE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A7BD66A92C58E79500C91BE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppleDB/AppleDB.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = XVQR493263;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleDB/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AppleDB;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WATCHOS_DEPLOYMENT_TARGET = 9.6;
+			};
+			name = Debug;
+		};
+		A7BD66AA2C58E79500C91BE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppleDB/AppleDB.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = XVQR493263;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleDB/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AppleDB;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WATCHOS_DEPLOYMENT_TARGET = 9.6;
+			};
+			name = Release;
+		};
+		A7EF28882C7B06860015B741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AppleDBPhoneWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = XVQR493263;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleDBPhoneWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AppleDBPhoneWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB.PearDBPhoneWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WATCHOS_DEPLOYMENT_TARGET = 9.6;
+			};
+			name = Debug;
+		};
+		A7EF28892C7B06860015B741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AppleDBPhoneWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = XVQR493263;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleDBPhoneWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AppleDBPhoneWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB.PearDBPhoneWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WATCHOS_DEPLOYMENT_TARGET = 9.6;
+			};
+			name = Release;
+		};
+		A7EF28B22C7B06F60015B741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AppleDBWatch/AppleDBWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = XVQR493263;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleDBWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AppleDB;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hydrate.PearDB;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		A7EF28B32C7B06F60015B741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AppleDBWatch/AppleDBWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = XVQR493263;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleDBWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AppleDB;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hydrate.PearDB;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		A7EF28D32C7B07B80015B741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AppleDBWatchWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = XVQR493263;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleDBWatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AppleDBWatchAppWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB.watchkitapp.PearDBWatchAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		A7EF28D42C7B07B80015B741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AppleDBWatchWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_TEAM = XVQR493263;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleDBWatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AppleDBWatchAppWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB.watchkitapp.PearDBWatchAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7BD66952C58E79300C91BE1 /* Build configuration list for PBXProject "AppleDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7BD66A62C58E79500C91BE1 /* Debug */,
+				A7BD66A72C58E79500C91BE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7BD66A82C58E79500C91BE1 /* Build configuration list for PBXNativeTarget "AppleDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7BD66A92C58E79500C91BE1 /* Debug */,
+				A7BD66AA2C58E79500C91BE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7EF28872C7B06860015B741 /* Build configuration list for PBXNativeTarget "AppleDBPhoneWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7EF28882C7B06860015B741 /* Debug */,
+				A7EF28892C7B06860015B741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7EF28B12C7B06F60015B741 /* Build configuration list for PBXNativeTarget "AppleDBWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7EF28B22C7B06F60015B741 /* Debug */,
+				A7EF28B32C7B06F60015B741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7EF28D22C7B07B80015B741 /* Build configuration list for PBXNativeTarget "AppleDBWatchWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7EF28D32C7B07B80015B741 /* Debug */,
+				A7EF28D42C7B07B80015B741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A75F8A992CCEE395003923DB /* XCRemoteSwiftPackageReference "SwipeActions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/SwipeActions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		A7C3A8BF2CCB762E00F0132B /* XCRemoteSwiftPackageReference "navigation-stack-backport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lm/navigation-stack-backport";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A75F8A9A2CCEE395003923DB /* SwipeActions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A75F8A992CCEE395003923DB /* XCRemoteSwiftPackageReference "SwipeActions" */;
+			productName = SwipeActions;
+		};
+		A7C3A8C02CCB762E00F0132B /* NavigationStackBackport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7C3A8BF2CCB762E00F0132B /* XCRemoteSwiftPackageReference "navigation-stack-backport" */;
+			productName = NavigationStackBackport;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A7BD66922C58E79300C91BE1 /* Project object */;
+}
