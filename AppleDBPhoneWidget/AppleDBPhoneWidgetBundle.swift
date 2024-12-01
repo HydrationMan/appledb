@@ -12,9 +12,11 @@ import SwiftUI
 struct AppleDBPhoneWidgetBundle: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
-        LeftSupaWidget()
-        RightSupaWidget()
-        SupaYearsWidget()
+        if #available(iOSApplicationExtension 16.1, *) {
+            LeftSupaWidget()
+            RightSupaWidget()
+            SupaYearsWidget()
+        }
         BDaySupaLeftWidget()
         BDaySupaRightWidget()
     }

@@ -229,24 +229,21 @@ class DeviceViewModel: ObservableObject {
 
 struct AsyncCachedImage<ImageView: View, PlaceholderView: View>: View {
     var url: URL?
-    var failurePlaceholder: String
     @ViewBuilder var content: (Image) -> ImageView
     @ViewBuilder var placeholder: () -> PlaceholderView
-    
-    @State var image: UIImage? = nil
-    
+
+    @State private var image: UIImage? = nil
+
     init(
         url: URL?,
-        failurePlaceholder: String = "exclamationmark.triangle",
         @ViewBuilder content: @escaping (Image) -> ImageView,
         @ViewBuilder placeholder: @escaping () -> PlaceholderView
     ) {
         self.url = url
-        self.failurePlaceholder = failurePlaceholder
         self.content = content
         self.placeholder = placeholder
     }
-    
+
     var body: some View {
         VStack {
             if let uiImage = image {
@@ -262,27 +259,24 @@ struct AsyncCachedImage<ImageView: View, PlaceholderView: View>: View {
         }
     }
 
+    // MARK: - Image Download Method
     private func downloadPhoto() async -> UIImage? {
-        let colorsConfig = UIImage.SymbolConfiguration(weight: .regular)
-        let sizeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold)
-        let imageConfig = colorsConfig.applying(sizeConfig)
-        let image = UIImage(systemName: failurePlaceholder, withConfiguration: imageConfig)?
-            .withRenderingMode(.alwaysTemplate)
+        let fallbackImage = UIImage(named: "Sad") // Use the "Sad" image from the Asset Catalog
         do {
-            guard let url else { return nil }
-            
+            guard let url else { return fallbackImage }
+
+            // Check if the image is cached
             if let cachedResponse = URLCache.shared.cachedResponse(for: .init(url: url)) {
-                return UIImage(data: cachedResponse.data) ?? image
+                return UIImage(data: cachedResponse.data) ?? fallbackImage
             } else {
+                // Download the image
                 let (data, response) = try await URLSession.shared.data(from: url)
-                
                 URLCache.shared.storeCachedResponse(.init(response: response, data: data), for: .init(url: url))
-                
-                return UIImage(data: data) ?? image
+                return UIImage(data: data) ?? fallbackImage
             }
         } catch {
-            print("Error downloading: \(error)")
-            return image
+            print("Error downloading image: \(error)")
+            return fallbackImage
         }
     }
 }
@@ -290,11 +284,14 @@ struct AsyncCachedImage<ImageView: View, PlaceholderView: View>: View {
 final class EditHardwareViewModel: ObservableObject {
     @Published var hardware: Hardware
     let isNew: Bool
-    
+
     private let context: NSManagedObjectContext
-    
+    let provider: HardwareProvider
+
     init(provider: HardwareProvider, hardware: Hardware? = nil) {
+        self.provider = provider
         self.context = provider.newContext
+
         if let hardware,
            let existingHardwareCopy = try? context.existingObject(with: hardware.objectID) as? Hardware {
             self.hardware = existingHardwareCopy
@@ -304,11 +301,45 @@ final class EditHardwareViewModel: ObservableObject {
             self.isNew = true
         }
     }
-    
+
     func save() throws {
         if context.hasChanges {
             try context.save()
         }
     }
+
+    func delete() throws {
+        context.delete(hardware)
+        try saveContext()
+    }
+
+    private func saveContext() throws {
+        DispatchQueue.global(qos: .background).async {
+            self.context.performAndWait {
+                do {
+                    try self.context.save()
+                } catch {
+                    print("Failed to save context: \(error)")
+                }
+            }
+        }
+    }
 }
 
+struct VisualEffectView: UIViewRepresentable {
+    /// The blur's style.
+    public var style: UIBlurEffect.Style
+
+    /// Use UIKit blurs in SwiftUI.
+    public init(_ style: UIBlurEffect.Style) {
+        self.style = style
+    }
+
+    public func makeUIView(context: Context) -> UIVisualEffectView {
+        UIVisualEffectView()
+    }
+
+    public func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+        uiView.effect = UIBlurEffect(style: style)
+    }
+}

@@ -26,8 +26,23 @@ struct SupaYearsTimeLineProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        let entry = SupaYearsEntry(date: Date(), providerInfo: "timeline")
-        let timeline = Timeline(entries: [entry], policy: .never)
+        let currentDate = Date()
+        var nextUpdateDate: Date
+        
+        // Determine the next update time
+        let today = Calendar.current.dateComponents([.day, .month], from: currentDate)
+        
+        if today.day == 7 && today.month == 9 {
+            // On September 7th, update hourly
+            nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate) ?? currentDate
+        } else {
+            // Set the next update for midnight
+            nextUpdateDate = Calendar.current.startOfDay(for: currentDate).addingTimeInterval(86400) // Midnight of the next day
+        }
+        
+        // Create the timeline entry
+        let entry = SupaYearsEntry(date: currentDate, providerInfo: "timeline")
+        let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
         completion(timeline)
     }
 }
@@ -36,17 +51,27 @@ struct SupaYearsWidgetView: View {
     
     let entry: SupaYearsEntry
     
+    private var isBirthdayToday: Bool {
+        let today = Calendar.current.dateComponents([.day, .month], from: entry.date)
+        return today.day == 8 && today.month == 9
+    }
+    
     var body: some View {
         HStack {
-            Image(uiImage: UIImage(named: "RightSupa") ?? UIImage()).resizable()
+            Image(uiImage: UIImage(named: isBirthdayToday ? "BDaySupaRight" : "NoBDaySupaRight") ?? UIImage())
+                .resizable()
                 .frame(width: 42, height: 42)
                 .widgetBackground(Color.clear)
             VStack {
                 Text("Superbro")
                 Text("2005-2024")
+                if isBirthdayToday {
+                    Text("Happy Birthday Bro")
+                        .font(.system(size: 10))
+                        .foregroundColor(.gray)
+                }
             }
         }
-        
     }
 }
 

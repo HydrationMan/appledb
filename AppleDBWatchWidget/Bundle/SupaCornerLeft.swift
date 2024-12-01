@@ -53,7 +53,7 @@ struct SupaCornerLeftWidget: Widget {
             SupaCornerLeftWidgetView(entry: entry)
         }
         .configurationDisplayName("Supa Corner Left")
-        .description("Supa Corner - Left Face")
+        .description("Supa Corner - Left Facing")
         .supportedFamilies([.accessoryCorner])
     }
 }

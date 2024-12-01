@@ -89,7 +89,7 @@ struct BDaySupaLeftWidget: Widget {
             BDaySupaLeftWidgetView(entry: entry)
         }
         .configurationDisplayName("Supa Birthday - Left Facing")
-        .description("SuperBro Living Years, Images changes upon his birthday every year. Left Facing.")
+        .description("SuperBro Living Years, Images changes upon his birthday every year - Left Facing.")
         .supportedFamilies([.systemSmall])
     }
 }
