@@ -15,10 +15,23 @@ struct DatabaseView: View {
     @FetchRequest(fetchRequest: Hardware.all()) private var hardware: FetchedResults<Hardware>
     var provider = HardwareProvider.shared
 
+    let categorizedDeviceTypes: [String: [String]] = [
+        "All": [
+            "iPhone", "iPad", "iPad Pro", "iPad Air", "iPad mini", "Apple Watch", "Apple TV",
+            "AirPods", "Headset", "MacBook", "MacBook Air", "MacBook Pro",
+            "Mac Pro", "Mac mini", "Mac Studio"
+        ],
+        "iPads": ["iPad", "iPad Pro", "iPad Air", "iPad mini"],
+        "Macs": ["MacBook", "MacBook Air", "MacBook Pro", "Mac Pro", "Mac mini", "Mac Studio"],
+        "iPhones": ["iPhone"],
+        "Apple Watch": ["Apple Watch"],
+        "Airpods": ["AirPods"],
+        "Vision Pro": ["Headset"],
+        "Apple TV": ["Apple TV"]
+    ]
+
     let deviceTypes: [String] = [
-        "All", "iPhone", "iPad", "iPad Pro", "iPad Air", "Apple Watch", "Apple TV",
-        "AirPods", "Headset", "MacBook", "MacBook Air", "MacBook Pro",
-        "Mac Pro", "Mac mini", "Mac Studio"
+        "All", "iPhones", "iPads", "Macs", "Apple Watches", "Airpods", "Vision Pro", "Apple TV"
     ]
 
     var body: some View {
@@ -30,7 +43,6 @@ struct DatabaseView: View {
                     compactDeviceListView()
                 }
                 .padding(.top)
-//                floatingAddButton()
             }
             .navigationTitle("Hardware Database")
             .toolbar {
@@ -100,10 +112,6 @@ struct DatabaseView: View {
                         .frame(width: 40, height: 40)
                 }
             )
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 40, height: 40)
-//                .foregroundColor(.accentColor)
 
             // Device Info
             VStack(alignment: .leading) {
@@ -119,30 +127,18 @@ struct DatabaseView: View {
         .padding(.vertical, 8)
     }
 
-//    private func floatingAddButton() -> some View {
-//        VStack {
-//            Spacer()
-//            HStack {
-//                Spacer()
-//                Button(action: { showCreateSheet = true }) {
-//                    Image(systemName: "plus.circle.fill")
-//                        .resizable()
-//                        .frame(width: 56, height: 56)
-//                        .foregroundColor(.accentColor)
-//                        .shadow(radius: 5)
-//                }
-//                .padding()
-//            }
-//        }
-//    }
-
     // MARK: - Data Filtering
 
     private func filteredHardware() -> [Hardware] {
         guard let selectedType = selectedType, selectedType != "All" else {
             return Array(hardware)
         }
-        return hardware.filter { $0.type == selectedType }
+
+        // Get the corresponding subtypes for the selected category
+        let subtypes = categorizedDeviceTypes[selectedType] ?? [selectedType]
+
+        // Filter hardware by subtypes
+        return hardware.filter { subtypes.contains($0.type ?? "") }
     }
 }
 

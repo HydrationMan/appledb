@@ -18,6 +18,7 @@ struct CreateHardwareView: View {
     @State private var selectedDevice: DeviceListEntry?
     @State private var selectedBoard: String?
 
+    @State private var firmwareMode: String = "Release" // Default to "Release"
     @State private var firmwareEntries: [FirmwareEntry] = []
     @State private var selectedFirmware: FirmwareEntry?
     @State private var isLoadingFirmware = false
@@ -30,7 +31,7 @@ struct CreateHardwareView: View {
             Form {
                 // Device Type Selection Section
                 Section(header: Text("Device Type").font(.headline)) {
-                    Toggle("Show Filtered Types", isOn: $showFilteredTypes)
+                    Toggle("Show more devices", isOn: $showFilteredTypes)
                         .padding(.vertical, 5)
 
                     Picker("Select Device Type", selection: $selectedType) {
@@ -54,9 +55,18 @@ struct CreateHardwareView: View {
                     Section(header: Text("Select a \(selectedType)").font(.headline)) {
                         Picker("Select Device", selection: $selectedDevice) {
                             Text("Select a \(selectedType)").tag(nil as DeviceListEntry?)
-                            ForEach(viewModel.devices.filter { $0.type == selectedType }, id: \.self) { device in
-                                Text(device.name).tag(device as DeviceListEntry?)
-                            }
+                            
+                            ForEach(viewModel.devices
+                                .filter { $0.type == selectedType && !$0.name.contains("Unreleased") }
+                                .sorted { lhs, rhs in
+                                    guard let lhsDate = parseReleaseDate(lhs.released),
+                                          let rhsDate = parseReleaseDate(rhs.released) else {
+                                        return false
+                                    }
+                                    return lhsDate < rhsDate
+                                }, id: \.self) { device in
+                                    Text(device.name).tag(device as DeviceListEntry?)
+                                }
                         }
                         .pickerStyle(MenuPickerStyle())
                         .onChange(of: selectedDevice) { newDevice in
@@ -72,6 +82,7 @@ struct CreateHardwareView: View {
                     Section(header: Text("Device Details").font(.headline)) {
                         Text("Device Name: \(details.name)")
                         Text("SoC: \(details.soc)")
+                        Text("Identifier: \(details.identifier?.joined(separator: ", ") ?? "Unknown")")
                         Text("Architecture: \(details.arch ?? "Unknown")")
                         Text("Type: \(details.type)")
                         Text("Released: \(details.released.joined(separator: ", "))")
@@ -102,9 +113,39 @@ struct CreateHardwareView: View {
                         }
                     }
                 } else if !firmwareEntries.isEmpty {
+                    // Filter firmware entries based on selected mode
+                    let filteredFirmwares: [FirmwareEntry] = {
+                        if firmwareMode == "Release" {
+                            return firmwareEntries.filter { $0.beta == false && ($0.internalVersion == false || $0.internalVersion == nil) }
+                        } else {
+                            return firmwareEntries.filter { $0.beta == true && ($0.internalVersion == false || $0.internalVersion == nil) }
+                        }
+                    }()
+
+                    // Sort firmware entries
+                    let sortedFirmwares = filteredFirmwares.sorted(by: { lhs, rhs in
+                        let versionComparison = lhs.version.compare(rhs.version, options: .numeric)
+                        if versionComparison != .orderedSame {
+                            return versionComparison == .orderedAscending
+                        }
+                        return (lhs.build ?? "").compare(rhs.build ?? "", options: .numeric) == .orderedAscending
+                    })
+
+                    
+                    // Firmware Mode Picker
+                    Section {
+                        Picker("Firmware Mode", selection: $firmwareMode) {
+                            Text("Release").tag("Release")
+                            Text("Beta").tag("Beta")
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(.vertical, 5)
+                    }
+                    
+                    // Firmware Picker
                     Section(header: Text("Select Firmware").font(.headline)) {
                         Picker("Firmware Version", selection: $selectedFirmware) {
-                            ForEach(firmwareEntries, id: \.self) { firmware in
+                            ForEach(sortedFirmwares, id: \.self) { firmware in
                                 Text("\(firmware.version) - \(firmware.build ?? "Unknown")")
                                     .tag(firmware as FirmwareEntry?)
                             }
@@ -141,15 +182,14 @@ struct CreateHardwareView: View {
 
     private var filteredDeviceTypes: [String] {
         let allTypes = Array(Set(viewModel.devices.map { $0.type })).sorted()
-        let predefinedTypes = ["iPhone", "iPad", "iPad Pro", "iPad Air", "Apple Watch", "Apple TV", "AirPods", "Headset", "MacBook", "MacBook Air", "MacBook Pro", "Mac Pro", "Mac mini", "Mac Studio"]
-        return showFilteredTypes ? allTypes.filter { predefinedTypes.contains($0) } : allTypes
+        let predefinedTypes = ["iPhone", "iPad", "iPad Pro", "iPad Air", "iPad mini", "Apple Watch", "Apple TV", "AirPods", "Headset", "MacBook", "MacBook Air", "MacBook Pro", "Mac Pro", "Mac mini", "Mac Studio", "HomePod"]
+        return showFilteredTypes ? allTypes : allTypes.filter { predefinedTypes.contains($0) }
     }
 
     private var canSave: Bool {
         // Check if all required fields are selected
         guard let _ = selectedType,
-              let _ = selectedDevice,
-              let _ = selectedFirmware else {
+              let _ = selectedDevice else {
             return false
         }
 
@@ -208,5 +248,42 @@ struct CreateHardwareView: View {
             return build1 != nil
         }
         return build1.compare(build2, options: .numeric) == .orderedDescending
+    }
+    
+    private func isValidFirmware(_ firmware: FirmwareEntry) -> Bool {
+        // Include only entries where `internalVersion` is false or does not exist
+        firmware.internalVersion == false || firmware.internalVersion == nil
+    }
+    
+    private func sortBetaFirmwares(_ lhs: FirmwareEntry, _ rhs: FirmwareEntry) -> Bool {
+        // Sort Beta builds numerically by version and build
+        let versionComparison = lhs.version.compare(rhs.version, options: .numeric)
+        if versionComparison != .orderedSame {
+            return versionComparison == .orderedAscending
+        }
+        return (lhs.build ?? "").compare(rhs.build ?? "", options: .numeric) == .orderedAscending
+    }
+    
+    private func sortReleaseFirmwares(_ lhs: FirmwareEntry, _ rhs: FirmwareEntry) -> Bool {
+        // Sort Release builds numerically by version and build
+        let versionComparison = lhs.version.compare(rhs.version, options: .numeric)
+        if versionComparison != .orderedSame {
+            return versionComparison == .orderedAscending
+        }
+        return (lhs.build ?? "").compare(rhs.build ?? "", options: .numeric) == .orderedAscending
+    }
+    
+    private func parseReleaseDate(_ releaseDates: [String]) -> Date? {
+        // Assume the `released` property is a list of release dates in "yyyy-MM-dd" format
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        // Try to parse the earliest release date
+        for dateString in releaseDates {
+            if let date = formatter.date(from: dateString) {
+                return date
+            }
+        }
+        return nil
     }
 }
