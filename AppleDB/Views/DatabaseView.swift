@@ -21,17 +21,17 @@ struct DatabaseView: View {
             "AirPods", "Headset", "MacBook", "MacBook Air", "MacBook Pro",
             "Mac Pro", "Mac mini", "Mac Studio"
         ],
-        "iPads": ["iPad", "iPad Pro", "iPad Air", "iPad mini"],
-        "Macs": ["MacBook", "MacBook Air", "MacBook Pro", "Mac Pro", "Mac mini", "Mac Studio"],
-        "iPhones": ["iPhone"],
+        "iPad": ["iPad", "iPad Pro", "iPad Air", "iPad mini"],
+        "Mac": ["MacBook", "MacBook Air", "MacBook Pro", "Mac Pro", "Mac mini", "Mac Studio"],
+        "iPhone": ["iPhone"],
         "Apple Watch": ["Apple Watch"],
-        "Airpods": ["AirPods"],
+        "AirPods": ["AirPods"],
         "Vision Pro": ["Headset"],
         "Apple TV": ["Apple TV"]
     ]
 
     let deviceTypes: [String] = [
-        "All", "iPhones", "iPads", "Macs", "Apple Watches", "Airpods", "Vision Pro", "Apple TV"
+        "All", "iPhone", "iPad", "Mac", "Apple Watch", "AirPods", "Vision Pro", "Apple TV"
     ]
 
     var body: some View {

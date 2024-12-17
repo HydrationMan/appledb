@@ -46,6 +46,7 @@ class appleDBPoll: ObservableObject {
     @Published var response: URLResponse?
     @Published var error: Bool = false
     @Published var board: [String] = []
+    @Published var key: String = ""
     private var cancellables = Set<AnyCancellable>()
 
     func simplefetch() {
@@ -61,6 +62,7 @@ class appleDBPoll: ObservableObject {
                         self.arch = decodedData.arch
                         self.type = decodedData.type
                         self.board = decodedData.board
+                        self.key = decodedData.key
                         print("Supported Architectures: \(decodedData.supportedArchitectures)")
                         print("Related Devices: \(decodedData.relatedDevices)")
                         print(decodedData.released)
@@ -140,6 +142,7 @@ struct Device: Decodable {
     var released: [String]
     var supportedArchitectures: [String]
     var relatedDevices: [String]
+    var key: String
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -147,6 +150,7 @@ struct Device: Decodable {
         self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? "Unknown"
         self.arch = try container.decodeIfPresent(String.self, forKey: .arch) ?? "Unknown"
         self.type = try container.decodeIfPresent(String.self, forKey: .type) ?? "Unknown"
+        self.key = try container.decodeIfPresent(String.self, forKey: .key) ?? "Unknown"
         
         if let releasedArray = try? container.decode([String].self, forKey: .released) {
             self.released = releasedArray
@@ -170,7 +174,7 @@ struct Device: Decodable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case name, soc, arch, type, board, released, supportedArchitectures, relatedDevices
+        case name, soc, arch, type, board, released, supportedArchitectures, relatedDevices, key
     }
 }
 

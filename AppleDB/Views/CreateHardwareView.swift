@@ -213,31 +213,52 @@ struct CreateHardwareView: View {
 
         do {
             try vm.save()
+            firmwareEntries = [] // Free up memory
+            viewModel.devices = [] // Free up memory
             presentationMode.wrappedValue.dismiss()
         } catch {
             print("Failed to save hardware to CoreData: \(error)")
         }
     }
-
     private func fetchFirmwareData(for device: DeviceListEntry) {
         isLoadingFirmware = true
-        guard let url = URL(string: "https://api.appledb.dev/ios/main.json") else { return }
+
+        let normalizedIdentifier = normalizeIdentifier(from: device)
+        guard let url = URL(string: "https://api.appledb.dev/device/\(normalizedIdentifier).json") else {
+            print("Error: Unable to create URL for device identifier \(normalizedIdentifier).")
+            isLoadingFirmware = false
+            return
+        }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
-            if let data = data {
-                do {
-                    let decodedData = try JSONDecoder().decode([FirmwareEntry].self, from: data)
-                    DispatchQueue.main.async {
-                        firmwareEntries = decodedData.filter { $0.deviceMap.contains(device.identifier?.first ?? "") }
-                        selectedFirmware = firmwareEntries.first
-                        isLoadingFirmware = false
-                    }
-                } catch {
-                    print("Error decoding JSON: \(error)")
-                    isLoadingFirmware = false
+            if let error = error {
+                print("Error fetching firmware data: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.isLoadingFirmware = false
                 }
-            } else {
-                isLoadingFirmware = false
+                return
+            }
+
+            guard let data = data else {
+                print("Error: No data received from URL \(url.absoluteString).")
+                DispatchQueue.main.async {
+                    self.isLoadingFirmware = false
+                }
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                let fetchedDevice = try decoder.decode(DeviceListEntry.self, from: data)
+                DispatchQueue.main.async {
+                    // Free the fetchedDevice if we only need its firmware
+                    self.fetchFirmwareEntries(for: normalizedIdentifier)
+                }
+            } catch {
+                print("Error decoding JSON: \(error)")
+                DispatchQueue.main.async {
+                    self.isLoadingFirmware = false
+                }
             }
         }.resume()
     }
@@ -253,6 +274,81 @@ struct CreateHardwareView: View {
     private func isValidFirmware(_ firmware: FirmwareEntry) -> Bool {
         // Include only entries where `internalVersion` is false or does not exist
         firmware.internalVersion == false || firmware.internalVersion == nil
+    }
+    
+    private func normalizeIdentifier(from device: DeviceListEntry) -> String {
+        guard let baseIdentifier = device.identifier?.first else {
+            print("Error: Device has no base identifier.")
+            return "UnknownIdentifier"
+        }
+
+        // Log the base identifier and key
+        print("Base Identifier: \(baseIdentifier)")
+        print("Device Key: \(device.key)")
+
+        // If the `key` does not match the `baseIdentifier`, a suffix is needed
+        if device.key != baseIdentifier {
+            // Extract the year from the `released` key
+            if let releaseDate = device.released.first,
+               let year = releaseDate.split(separator: "-").first {
+                print("Appending year suffix \(year) to identifier \(baseIdentifier).")
+                return "\(baseIdentifier)-\(year)"
+            }
+        }
+
+        // No suffix needed, return the base identifier
+        print("No year suffix needed for \(baseIdentifier).")
+        return baseIdentifier
+    }
+    
+    private func fetchFirmwareEntries(for identifier: String) {
+        guard let url = URL(string: "https://api.appledb.dev/ios/main.json") else {
+            print("Error: Unable to create firmware URL.")
+            isLoadingFirmware = false
+            return
+        }
+
+        print("Fetching firmware entries for identifier: \(identifier)")
+        print("Request URL: \(url.absoluteString)")
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Error fetching firmware entries: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.isLoadingFirmware = false
+                }
+                return
+            }
+
+            guard let data = data else {
+                print("Error: No data received from URL \(url.absoluteString).")
+                DispatchQueue.main.async {
+                    self.isLoadingFirmware = false
+                }
+                return
+            }
+
+            do {
+                let decodedData = try JSONDecoder().decode([FirmwareEntry].self, from: data)
+                print("Fetched \(decodedData.count) firmware entries.")
+
+                DispatchQueue.main.async {
+                    self.firmwareEntries = decodedData.filter { $0.deviceMap.contains(identifier) }
+                        .sorted { sortBuildNumbers($0.build, $1.build) }
+                    
+                    print("Filtered firmware entries: \(self.firmwareEntries.map { "\($0.version) - \($0.build ?? "Unknown")" })")
+
+                    self.selectedFirmware = self.firmwareEntries.first
+                    print("Selected firmware: \(self.selectedFirmware?.version ?? "None")")
+                    self.isLoadingFirmware = false
+                }
+            } catch {
+                print("Error decoding firmware JSON: \(error)")
+                DispatchQueue.main.async {
+                    self.isLoadingFirmware = false
+                }
+            }
+        }.resume()
     }
     
     private func sortBetaFirmwares(_ lhs: FirmwareEntry, _ rhs: FirmwareEntry) -> Bool {

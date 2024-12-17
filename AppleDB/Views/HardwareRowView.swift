@@ -76,6 +76,39 @@ struct HardwareRowView: View {
     @Environment(\.managedObjectContext) private var moc
     @ObservedObject var hardware: Hardware
     
+    var normalizedIdentifier: String {
+        guard let baseIdentifier = hardware.identifier else {
+            print("Error: Hardware has no base identifier.")
+            return "Unknown"
+        }
+
+        if let key = hardware.key {
+            print("Base Identifier: \(baseIdentifier)")
+            print("Key from hardware: \(key)")
+        } else {
+            print("Error: Hardware has no key.")
+        }
+
+        if let releaseDate = hardware.released {
+            print("Release Date: \(releaseDate)")
+        } else {
+            print("Error: Hardware has no release date.")
+        }
+
+        // Check if the identifier requires a suffix
+        if let key = hardware.key, key != baseIdentifier {
+            if let releaseDate = hardware.released,
+               let year = releaseDate.split(separator: "-").first {
+                print("Suffix required. Normalized Identifier: \(baseIdentifier)-\(year)")
+                return "\(baseIdentifier)-\(year)"
+            }
+        }
+
+        // No suffix needed
+        print("No suffix required. Normalized Identifier: \(baseIdentifier)")
+        return baseIdentifier
+    }
+    
     var body: some View {
         SwipeViewGroup {
             SwipeView(
@@ -112,7 +145,7 @@ struct HardwareRowView: View {
                         Spacer()
                         
                         AsyncCachedImage(
-                            url: URL(string: "https://img.appledb.dev/device@main/\(hardware.identifier ?? "iPhone1,1")/0.avif"),
+                            url: URL(string: "https://img.appledb.dev/device@main/\(normalizedIdentifier)/0.avif"),
                             content: { image in
                                 image
                                     .resizable()

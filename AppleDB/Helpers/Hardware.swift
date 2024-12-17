@@ -27,6 +27,8 @@ final class Hardware: NSManagedObject, Identifiable {
     @NSManaged var board: String?
     @NSManaged var name: String?
     @NSManaged var type: String?
+    @NSManaged var key: String?
+    @NSManaged var released: String?
     
     override func awakeFromInsert() {
         super.awakeFromInsert()
