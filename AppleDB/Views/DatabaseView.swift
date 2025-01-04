@@ -12,6 +12,7 @@ import NavigationStackBackport
 struct DatabaseView: View {
     @State private var showCreateSheet: Bool = false
     @State private var selectedType: String? = "All"
+    @State var refreshTrigger = false
     @FetchRequest(fetchRequest: Hardware.all()) private var hardware: FetchedResults<Hardware>
     var provider = HardwareProvider.shared
 
@@ -44,7 +45,7 @@ struct DatabaseView: View {
                 }
                 .padding(.top)
             }
-            .navigationTitle("Hardware Database")
+            .navigationTitle("My Devices")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showCreateSheet = true }) {
@@ -57,6 +58,10 @@ struct DatabaseView: View {
                 CreateHardwareView(vm: vm)
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("CoreDataDidPurge"))) { _ in
+            refreshTrigger.toggle()
+        }
+        .id(refreshTrigger)
     }
 
     // MARK: - Helper Views

@@ -6,18 +6,26 @@
 //
 
 import SwiftUI
+import NavigationStackBackport
 
 struct SettingsView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     var body: some View {
-        VStack {
-            Text("Coming soon...")
-                .font(.largeTitle.bold())
-            Text("Have a supa for now!")
-                .font(.callout)
-            Image("RightSupa")
+        NavigationStackBackport.NavigationStack {
+            VStack {
+                List {
+                    NavigationLink("About") {
+                        SettingsAboutView()
+                    }
+                    NavigationLink("Database") {
+                        SettingsDatabaseView()
+                            .environment(\.managedObjectContext, viewContext)
+                        
+                    }
+                }
+            }
+            .navigationTitle("Settings")
         }
-        
-        
     }
 }
 
