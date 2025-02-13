@@ -12,6 +12,7 @@ struct PearDBApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environment(\.managedObjectContext, DeviceEntryProvider.shared.viewContext)
         }
     }
 }

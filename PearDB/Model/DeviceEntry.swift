@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class Entry: NSManagedObject {
+final class Entry: NSManagedObject, Identifiable {
     @NSManaged var type: String?
     @NSManaged var soc: String?
     @NSManaged var released: Date?
@@ -23,5 +23,10 @@ final class Entry: NSManagedObject {
     @NSManaged var bdid: String?
     @NSManaged var arch: String?
     @NSManaged var serial: String?
+    
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+        setPrimitiveValue(false, forKey: "isMain")
+    }
     
 }
