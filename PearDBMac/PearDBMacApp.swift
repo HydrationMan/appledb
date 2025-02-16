@@ -19,40 +19,49 @@ struct PearDBMacApp: App {
 
 // MARK: NavigationStack
 struct MainView: View {
-    @State var selected: Int? = 0
-    
+    @State private var selected: Int? = 0
+
     var body: some View {
-        NavigationView {
-            List {
+        NavigationSplitView {
+            List(selection: $selected) {
                 Section {
                     Group {
-                        NavigationLink(destination: DeviceView(), tag: 0, selection: $selected) {
+                        NavigationLink(value: 0) {
                             Label("Devices", systemImage: "internaldrive")
                         }
-                        NavigationLink(destination: Text("Firmware - soon"), tag: 1, selection: $selected) {
+                        NavigationLink(value: 1) {
                             Label("Firmware", systemImage: "terminal")
                         }
-                        NavigationLink(destination: Text("Database - soon"), tag: 2, selection: $selected) {
+                        NavigationLink(value: 2) {
                             Label("Database", systemImage: "tray.full")
                         }
-                        NavigationLink(destination: Text("Settings - soon"), tag: 3, selection: $selected) {
+                        NavigationLink(value: 3) {
                             Label("Settings", systemImage: "gear")
                         }
                     }
                 } header: {
                     Text("PearDB")
                 }
-                
             }
             .listStyle(SidebarListStyle())
             .navigationTitle("PearDB")
             .frame(minWidth: 150, idealWidth: 250, maxWidth: 300)
-            .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    Button(action: toggleSidebar, label: {
-                        Image(systemName: "sidebar.left")
-                    })
+        } detail: {
+            if let selected = selected {
+                switch selected {
+                case 0:
+                    DeviceView()
+                case 1:
+                    Text("Firmware - soon")
+                case 2:
+                    Text("Database - soon")
+                case 3:
+                    Text("Settings - soon")
+                default:
+                    Text("Select an option from the sidebar")
                 }
+            } else {
+                Text("Select an option from the sidebar")
             }
         }
     }
