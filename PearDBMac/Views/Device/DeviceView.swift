@@ -29,15 +29,26 @@ struct DeviceView: View {
                             .padding()
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
+                    
                     else {
                         ScrollView {
                             LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                                 if (!deviceViewModel.searchedDevices.isEmpty) {
-                                    ForEach(deviceViewModel.searchedDevices.lazy.filter { $0.deviceType == deviceViewModel.filter }.sorted(by: { $0.name.localizedStandardCompare($1.name) == .orderedAscending }), id: \.id) { device in
+                                    ForEach(
+                                        deviceViewModel.searchedDevices.lazy
+                                            .filter { $0.deviceType == deviceViewModel.filter }
+                                            .sorted(by: { $0.name.localizedStandardCompare($1.name) == .orderedAscending }),
+                                        id: \.id
+                                    ) { device in
                                         DeviceItemView(device: device)
                                     }
                                 } else if (!deviceViewModel.devices.isEmpty) {
-                                    ForEach(deviceViewModel.devices.lazy.filter { $0.deviceType == deviceViewModel.filter }.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }, id: \.id) { device in
+                                    ForEach(
+                                        deviceViewModel.devices.lazy
+                                            .filter { $0.deviceType == deviceViewModel.filter }
+                                            .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending },
+                                        id: \.id
+                                    ) { device in
                                         DeviceItemView(device: device)
                                     }
                                 }
@@ -48,10 +59,8 @@ struct DeviceView: View {
                         }
                         .padding(.horizontal, 16)
                     }
-                    
                 }
             }
-            
         }
     }
 }
