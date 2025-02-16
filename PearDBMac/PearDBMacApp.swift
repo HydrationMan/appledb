@@ -29,13 +29,13 @@ struct MainView: View {
                         NavigationLink(destination: DeviceView(), tag: 0, selection: $selected) {
                             Label("Devices", systemImage: "internaldrive")
                         }
-                        NavigationLink(destination: EmptyView(), tag: 1, selection: $selected) {
+                        NavigationLink(destination: Text("Firmware - soon"), tag: 1, selection: $selected) {
                             Label("Firmware", systemImage: "terminal")
                         }
-                        NavigationLink(destination: EmptyView(), tag: 2, selection: $selected) {
+                        NavigationLink(destination: Text("Database - soon"), tag: 2, selection: $selected) {
                             Label("Database", systemImage: "tray.full")
                         }
-                        NavigationLink(destination: EmptyView(), tag: 3, selection: $selected) {
+                        NavigationLink(destination: Text("Settings - soon"), tag: 3, selection: $selected) {
                             Label("Settings", systemImage: "gear")
                         }
                     }
