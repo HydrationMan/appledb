@@ -9,10 +9,11 @@ import SwiftUI
 
 struct HeaderView: View {
     var title: String
+    var deviceTypes: [DeviceType] = DeviceType.allCases
     var searchable: (String) -> Void
-    var applyFilter: (String?) -> Void
+    var applyFilter: (DeviceType) -> Void
     
-    @State var filter: String? = nil
+    @State var filter: String = DeviceType.allCases[0].rawValue
     @State var search: String = ""
     
     var body: some View {
@@ -26,17 +27,15 @@ struct HeaderView: View {
                 
             }
             Menu {
-                Button("Filter") {
-                    self.filter = nil
-                    self.applyFilter(self.filter)
-                }
-                Button("Accessories") {
-                    self.filter = "Accessories"
-                    self.applyFilter(self.filter)
+                ForEach(Array(deviceTypes.enumerated()), id: \.offset) { offset, deviceType in
+                    Button(deviceType.rawValue) {
+                        self.filter = deviceType.rawValue
+                        self.applyFilter(deviceType)
+                    }
                 }
             } label: {
                 Label {
-                    Text(filter ?? "Filter")
+                    Text(filter)
                 } icon: {
                     Image(systemName: "line.3.horizontal.decrease.circle")
                 }

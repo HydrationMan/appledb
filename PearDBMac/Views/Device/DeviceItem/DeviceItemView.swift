@@ -13,13 +13,14 @@ struct DeviceItemView: View {
     var body: some View {
         NavigationLink(destination: DeviceDetailView(device: device)) {
             HStack {
+                
                 VStack(alignment: .leading) {
                     Text(device.name)
                     Text(device.type ?? "")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 Image(systemName: "chevron.forward")
             }
             .frame(maxWidth: .infinity, alignment: .leading)

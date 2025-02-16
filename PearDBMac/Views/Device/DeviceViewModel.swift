@@ -11,6 +11,7 @@ import SwiftUICore
     private let appDbDownloader: AppleDBDownloader
     @Published var devices: [Device] = []
     @Published var searchedDevices: [Device] = []
+    @Published var filter: DeviceType = .accessories
     @Published var isLoading: Bool = true
     
     init(appDbDownloader: AppleDBDownloader) {
@@ -27,16 +28,6 @@ import SwiftUICore
             self.searchedDevices = self.devices.filter { $0.name.lowercased().contains(searchString.lowercased())}
         } else {
             self.searchedDevices = []
-        }
-    }
-    
-    public func filter(filterString: String?) {
-        if (filterString != nil) {
-            if (searchedDevices.isEmpty) {
-                self.searchedDevices = self.searchedDevices.filter { $0.type?.lowercased().contains(filterString!) == true }
-            } else {
-                self.searchedDevices = self.devices.filter { $0.type?.lowercased().contains(filterString!) == true }
-            }
         }
     }
     
