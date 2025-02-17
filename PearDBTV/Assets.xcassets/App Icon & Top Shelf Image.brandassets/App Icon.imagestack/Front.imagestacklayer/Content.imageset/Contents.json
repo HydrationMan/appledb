@@ -1,11 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "front.png",
+      "filename" : "dbiconFront@1x.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
+      "filename" : "dbiconFront@2x.png",
       "idiom" : "tv",
       "scale" : "2x"
     }

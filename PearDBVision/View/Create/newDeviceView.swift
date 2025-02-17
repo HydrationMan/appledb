@@ -14,7 +14,7 @@ struct newDeviceView: View {
     @State private var filteredDevices: [Device] = []
     @State private var selectedDevice: Device?
     @ObservedObject private var downloader = AppleDBDownloader.shared
-//    @ObservedObject var vm: editDeviceViewModel
+    @ObservedObject var vm: editDeviceViewModel
 
     var body: some View {
         NavigationView {
@@ -22,9 +22,7 @@ struct newDeviceView: View {
                 TextField("Search for a device", text: $searchText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                    .onChange(of: searchText) {
-                        filterDevices() 
-                    }
+                    .onChange(of: searchText) { filterDevices() }
 
                 List(filteredDevices, id: \.key) { device in
                     Button(action: {
@@ -103,8 +101,8 @@ struct newDeviceDetailView: View {
         .padding()
     }
 }
-//#Preview {
-//    NavigationStack {
-//        newDeviceView(vm: .init(provider: .shared))
-//    }
-//}
+#Preview {
+    NavigationStack {
+        newDeviceView(vm: .init(provider: .shared))
+    }
+}

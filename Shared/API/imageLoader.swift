@@ -9,7 +9,21 @@ import SwiftUI
 
 struct AsyncImageView: View {
     let url: String
+    #if os(iOS)
+    @State private var image: UIImage?
+    #endif
+    #if os(tvOS)
+    @State private var image: UIImage?
+    #endif
+    #if os(macOS)
     @State private var image: NSImage?
+    #endif
+    #if os(visionOS)
+    @State private var image: UIImage?
+    #endif
+    #if os(watchOS)
+    @State private var image: UIImage?
+    #endif
     @State private var loadingState: LoadingState = .loading
     
     enum LoadingState {
@@ -23,15 +37,35 @@ struct AsyncImageView: View {
                 ProgressView()
             case .success:
                 if let image = image {
+                    #if os(iOS)
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                    #endif
+                    #if os(tvOS)
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                    #endif
+                    #if os(macOS)
                     Image(nsImage: image)
                         .resizable()
                         .scaledToFit()
+                    #endif
+                    #if os(visionOS)
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                    #endif
+                    #if os(watchOS)
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                    #endif
+                    
                 }
             case .failed:
-                Text("loadImage says: Error loading image :(")
-                    .foregroundColor(.red)
-                Text("(There is probably no image available)")
-                    .foregroundColor(.gray)
+                Color.clear
             }
         }
         .onAppear {
@@ -75,6 +109,25 @@ struct AsyncImageView: View {
             }
 
             // Handle image data
+            #if os(iOS)
+            guard let data = data, let img = UIImage(data: data) else {
+                print("❌ No valid image data received for URL: \(url.absoluteString)")
+                DispatchQueue.main.async {
+                    self.loadingState = .failed
+                }
+                return
+            }
+            #endif
+            #if os(tvOS)
+            guard let data = data, let img = UIImage(data: data) else {
+                print("❌ No valid image data received for URL: \(url.absoluteString)")
+                DispatchQueue.main.async {
+                    self.loadingState = .failed
+                }
+                return
+            }
+            #endif
+            #if os(macOS)
             guard let data = data, let img = NSImage(data: data) else {
                 print("❌ No valid image data received for URL: \(url.absoluteString)")
                 DispatchQueue.main.async {
@@ -82,7 +135,25 @@ struct AsyncImageView: View {
                 }
                 return
             }
-
+            #endif
+            #if os(visionOS)
+            guard let data = data, let img = UIImage(data: data) else {
+                print("❌ No valid image data received for URL: \(url.absoluteString)")
+                DispatchQueue.main.async {
+                    self.loadingState = .failed
+                }
+                return
+            }
+            #endif
+            #if os(watchOS)
+            guard let data = data, let img = UIImage(data: data) else {
+                print("❌ No valid image data received for URL: \(url.absoluteString)")
+                DispatchQueue.main.async {
+                    self.loadingState = .failed
+                }
+                return
+            }
+            #endif
             DispatchQueue.main.async {
                 self.image = img
                 self.loadingState = .success

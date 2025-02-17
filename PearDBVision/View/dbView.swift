@@ -39,7 +39,7 @@ struct dbView: View {
             }
             .sheet(isPresented: $isShowingNewDevice) {
                 NavigationStack {
-                    newDeviceView()
+                    newDeviceView(vm: .init(provider: provider))
                 }
             }
             .navigationTitle("Database")

@@ -122,8 +122,25 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Model/DeviceDataModel.xcdatamodeld,
+				Model/DeviceEntry.swift,
+				Model/DeviceEntryProvider.swift,
 			);
 			target = A7B6FDB52D5E8253001E2DD6 /* PearDBVision */;
+		};
+		A7F825792D62C9FB0030188F /* Exceptions for "PearDBMac" folder in "PearDBMac" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E654315C2D6189E9008A3CC5 /* PearDBMac */;
+		};
+		A7F8257B2D62CA060030188F /* Exceptions for "PearDBTV" folder in "PearDBTV" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A7B6FDA32D5E822F001E2DD6 /* PearDBTV */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -162,6 +179,9 @@
 		};
 		A7B6FDA52D5E822F001E2DD6 /* PearDBTV */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A7F8257B2D62CA060030188F /* Exceptions for "PearDBTV" folder in "PearDBTV" target */,
+			);
 			path = PearDBTV;
 			sourceTree = "<group>";
 		};
@@ -175,6 +195,9 @@
 		};
 		E654315E2D6189E9008A3CC5 /* PearDBMac */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A7F825792D62C9FB0030188F /* Exceptions for "PearDBMac" folder in "PearDBMac" target */,
+			);
 			path = PearDBMac;
 			sourceTree = "<group>";
 		};
@@ -325,6 +348,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A74107CD2D5175EB00898B0C /* PearDB */,
+				E654317A2D619722008A3CC5 /* Model */,
+				E65431B02D619814008A3CC5 /* API */,
 			);
 			name = PearDB;
 			packageProductDependencies = (
@@ -371,6 +396,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A76FC6D02D5191B5002E6B3B /* PearDBWatch */,
+				E654317A2D619722008A3CC5 /* Model */,
+				E65431B02D619814008A3CC5 /* API */,
 			);
 			name = PearDBWatch;
 			packageProductDependencies = (
@@ -415,6 +442,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A7B6FDA52D5E822F001E2DD6 /* PearDBTV */,
+				E654317A2D619722008A3CC5 /* Model */,
+				E65431B02D619814008A3CC5 /* API */,
 			);
 			name = PearDBTV;
 			packageProductDependencies = (
@@ -437,6 +466,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A7B6FDB72D5E8253001E2DD6 /* PearDBVision */,
+				E654317A2D619722008A3CC5 /* Model */,
+				E65431B02D619814008A3CC5 /* API */,
 			);
 			name = PearDBVision;
 			packageProductDependencies = (
@@ -519,12 +550,12 @@
 			projectRoot = "";
 			targets = (
 				A74107CA2D5175EB00898B0C /* PearDB */,
-				A76FC6B42D51917F002E6B3B /* PearDBPhoneWidgetExtension */,
-				A76FC6CE2D5191B5002E6B3B /* PearDBWatch */,
-				A76FC6E42D5191D2002E6B3B /* PearDBWatchWidgetExtension */,
 				A7B6FDA32D5E822F001E2DD6 /* PearDBTV */,
-				A7B6FDB52D5E8253001E2DD6 /* PearDBVision */,
 				E654315C2D6189E9008A3CC5 /* PearDBMac */,
+				A7B6FDB52D5E8253001E2DD6 /* PearDBVision */,
+				A76FC6CE2D5191B5002E6B3B /* PearDBWatch */,
+				A76FC6B42D51917F002E6B3B /* PearDBPhoneWidgetExtension */,
+				A76FC6E42D5191D2002E6B3B /* PearDBWatchWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -803,6 +834,10 @@
 				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -841,6 +876,10 @@
 				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -874,6 +913,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB.PearDBPhoneWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -907,6 +950,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB.PearDBPhoneWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -929,7 +976,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PearDBWatch/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = PearDBWatch;
+				INFOPLIST_KEY_CFBundleDisplayName = PearDB;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hydrate.PearDB;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -964,7 +1011,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PearDBWatch/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = PearDBWatch;
+				INFOPLIST_KEY_CFBundleDisplayName = PearDB;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hydrate.PearDB;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1054,6 +1101,7 @@
 		A7B6FDAF2D5E8231001E2DD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1062,6 +1110,7 @@
 				DEVELOPMENT_TEAM = XVQR493263;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PearDBTV/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PearDB;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1071,7 +1120,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDBTV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1084,6 +1133,7 @@
 		A7B6FDB02D5E8231001E2DD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1092,6 +1142,7 @@
 				DEVELOPMENT_TEAM = XVQR493263;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PearDBTV/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PearDB;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1101,7 +1152,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDBTV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1114,6 +1165,10 @@
 		A7B6FDC82D5E8255001E2DD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					arm64e,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1129,7 +1184,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDBVision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -1143,6 +1198,10 @@
 		A7B6FDC92D5E8255001E2DD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					arm64e,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1158,7 +1217,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDBVision;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -1172,6 +1231,10 @@
 		E65431692D6189EB008A3CC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					arm64e,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PearDBMac/PearDBMac.entitlements;
@@ -1179,17 +1242,20 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PearDBMac/Preview Content\"";
+				DEVELOPMENT_TEAM = XVQR493263;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PearDBMac/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PearDB;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2025 Kane Parkinson";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDBMac;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1200,6 +1266,10 @@
 		E654316A2D6189EB008A3CC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					arm64e,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PearDBMac/PearDBMac.entitlements;
@@ -1207,17 +1277,20 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PearDBMac/Preview Content\"";
+				DEVELOPMENT_TEAM = XVQR493263;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PearDBMac/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PearDB;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2025 Kane Parkinson";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDBMac;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hydrate.PearDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;

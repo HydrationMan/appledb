@@ -23,7 +23,6 @@ struct newDeviceView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .onChange(of: searchText) { _ in filterDevices() }
-                // Replace with: .onChange(of: searchText) { filterDevices() } via if #available ?
 
                 List(filteredDevices, id: \.key) { device in
                     Button(action: {
