@@ -99,6 +99,7 @@ struct DeviceDetailView: View {
                 Text("Released: \(released)")
                     .foregroundColor(.secondary)
             }
+            AsyncImageView(url: "https://img.appledb.dev/device@main/\(device.key)/0.png")
             Spacer()
         }
         .padding()
