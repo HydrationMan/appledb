@@ -13,19 +13,8 @@ struct DeviceItemView: View {
     var body: some View {
         NavigationLink(destination: DeviceDetailView(device: device)) {
             HStack {
-                AsyncImage(url: URL(string: "https://img.appledb.dev/device@main/\(device.key)/0.png")) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 32, height: 64)
-                    } else if phase.error != nil {
-                        Color.clear
-                            .frame(width: 32, height: 64)
-                    } else {
-                        ProgressView()
-                    }
-                }
+                AsyncImageView(url: "https://img.appledb.dev/device@main/\(device.key)/0.png")
+                    .frame(width: 32, height: 64)
                 VStack(alignment: .leading) {
                     Text(device.name)
                     Text(device.type ?? "")

@@ -28,10 +28,7 @@ struct AsyncImageView: View {
                         .scaledToFit()
                 }
             case .failed:
-                Text("loadImage says: Error loading image :(")
-                    .foregroundColor(.red)
-                Text("(There is probably no image available)")
-                    .foregroundColor(.gray)
+                Color.clear
             }
         }
         .onAppear {
